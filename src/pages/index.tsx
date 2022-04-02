@@ -266,7 +266,7 @@ const Home: NextPage = () => {
    </div>
 
    <div className="col-2 position-relative">
-     <div className="position-fixed bg-danger">
+     <div className="position-fixed">
      <LeaderBoard />
      </div>
      </div>
