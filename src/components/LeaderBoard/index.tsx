@@ -23,7 +23,7 @@ const LeaderBoard = ({leaderData} : any) => {
 
     if (!leaderData) return null;
 
-    return <div className={`p-5`}>
+    return <div className={`p-5 ${styles.topSTicky}`}>
         <h4 className={``}>LeaderBoard</h4>
         {leaderData && leaderData.map((el: any) => <div key={el.name} className="d-flex">
             <div className=""> 

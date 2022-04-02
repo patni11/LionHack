@@ -218,8 +218,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={`${styles.container} ${styles.topbar}`}>
-      
-      <WalletConnectButton />
+      <div className="d-flex justify-content-between col-9">
       {address && (
         <div className={styles.searchSection}>
           <div className={styles.inputContainer}>
@@ -258,6 +257,8 @@ const Home: NextPage = () => {
           )}
         </div>
       )}
+            <WalletConnectButton />
+            </div>
 
 
 {address && <div className={`row d-flex justify-content-between`}>
