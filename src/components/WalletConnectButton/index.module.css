@@ -1,0 +1,43 @@
+.container .connectWalletButton {
+  position: absolute;
+  background-color: #000000;
+  border: 2px solid #1a1a1a;
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 36px;
+  text-align: center;
+  width: auto;
+  will-change: transform;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container .disconnectWalletButton {
+  background-color: #000000;
+  border: 2px solid #1a1a1a;
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 36px;
+  text-align: center;
+  width: auto;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.container .connectWalletButton:hover .disconnectWalletButton:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.container .connectWalletButton:active .disconnectWalletButton:hover {
+  box-shadow: none;
+}
+
+.container .userAddress {
+  font-weight: bold;
+  padding: 1rem;
+}

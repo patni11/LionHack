@@ -1,0 +1,22 @@
+.feed_container {
+  padding: 2em;
+  border: 0.2em solid grey;
+  border-radius: 5px;
+  margin: 0.4em;
+}
+
+.feed_head {
+  position: relative;
+  top: 0.5em;
+  display: flex;
+}
+
+.activity_type {
+  background-color: orange;
+  display: inline-block;
+}
+
+.feed_image {
+  border-radius: 50%;
+  max-width: 80px;
+}
