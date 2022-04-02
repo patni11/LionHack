@@ -12,7 +12,9 @@
   height: 500px;
   position: relative;
 }
-
+.topbar {
+  display: flex;
+}
 .discription {
   text-align: center;
   position: relative;

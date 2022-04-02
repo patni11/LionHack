@@ -23,18 +23,27 @@ function Feed({
   return (
     <div className={style.feed_container}>
       <div className={style.feed_head}>
-        <Image
-          src={image}
-          alt=""
-          className={style.feed_image}
-          width="100px"
-          height="100px"
-        />
-        <h4 className={style.feed_address}> {address}</h4>
+        <div className={style.head_left}>
+          <img
+            src={image}
+            alt=""
+            className={style.feed_image}
+            width="50px"
+            height="50px"
+          />
+          <h4 className={style.feed_address}> {address}</h4>
+        </div>
 
-        <h5 className={style.activity_type}>NFT</h5>
+        <div className={style.head_right}>
+          <h5 className={style.activity_type}>{activity_type}</h5>
+          <i>
+            <h5 className={style.date}>5 hrs ago</h5>
+          </i>
+        </div>
       </div>
 
+      <br></br>
+      <br></br>
       <div className={style.feed_second}>
         <h2>{activity_title}</h2>
         <p>{activity_description}</p>

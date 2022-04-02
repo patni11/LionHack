@@ -1,22 +1,63 @@
 .feed_container {
   padding: 2em;
-  border: 0.2em solid grey;
+  border: 0.1em solid grey;
   border-radius: 5px;
   margin: 0.4em;
 }
 
 .feed_head {
+  display: block;
   position: relative;
-  top: 0.5em;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5em;
+}
+
+.head_left {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+}
+
+.head_right {
+  position: absolute;
+  right: 0;
+}
+
+.feed_address {
+  margin: 0;
+  width: fit-content;
+  display: inline-block;
 }
 
 .activity_type {
   background-color: orange;
+  padding: 0.4em;
+  border-radius: 0.6em;
+  width: fit-content;
+  margin: 0;
   display: inline-block;
 }
 
 .feed_image {
   border-radius: 50%;
   max-width: 80px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 1em;
+}
+
+.date {
+  margin: 0;
+  display: inline-block;
+  color: darkgray;
+  margin-left: 0.4em;
+}
+
+.feed_second {
+  display: block;
 }

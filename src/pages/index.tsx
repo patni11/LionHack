@@ -213,7 +213,7 @@ const Home: NextPage = () => {
   }, [address]);
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles.topbar}`}>
       
       <WalletConnectButton />
       {address && (
