@@ -56,7 +56,7 @@ const Home: NextPage = () => {
       setFollowLoading(true);
 
       // Execute connect if the current user is not following the search addrress.
-      if (!searchAddrInfo.connections[0].followStatus.isFollowing) {
+      if (!searchAddrInfo.connections[0]?.followStatus?.isFollowing) {
         await cyberConnect.connect(searchInput);
 
         // Overwrite the local status of isFollowing
@@ -239,7 +239,7 @@ const Home: NextPage = () => {
               loading={followLoading}
               className={styles.loadingButton}
             >
-              {!searchAddrInfo?.connections[0].followStatus.isFollowing
+              {!searchAddrInfo?.connections[0]?.followStatus?.isFollowing
                 ? "Follow"
                 : "Unfollow"}
             </LoadingButton>
@@ -267,7 +267,7 @@ const Home: NextPage = () => {
 
    <div className="col-2 position-relative">
      <div className="position-fixed">
-     <LeaderBoard />
+     <LeaderBoard/> 
      </div>
      </div>
 
