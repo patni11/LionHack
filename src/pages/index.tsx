@@ -13,7 +13,11 @@ import { followListInfoQuery, searchUserInfoQuery } from "@/utils/query";
 import { FollowListInfoResp, SearchUserInfoResp, Network } from "@/utils/types";
 import { formatAddress, removeDuplicate, isValidAddr } from "@/utils/helper";
 import { useWeb3 } from "@/context/web3Context";
+
+// components
 import ActivityFeed from "@/components/ActivityFeed/activityFeed";
+import LeaderBoard from "@/components/LeaderBoard";
+
 const NAME_SPACE = "CyberConnect";
 const NETWORK = Network.ETH;
 const FIRST = 10; // The number of users in followings/followers list for each fetch
@@ -256,7 +260,18 @@ const Home: NextPage = () => {
       )}
 
 
-{address? <ActivityFeed></ActivityFeed> : ""}
+{address && <div className={`row d-flex justify-content-between`}>
+  <div className="col-10">
+   <ActivityFeed />
+   </div>
+
+   <div className="col-2 position-relative">
+     <div className="position-fixed bg-danger">
+     <LeaderBoard />
+     </div>
+     </div>
+
+</div>}
       
       <Snackbar
         open={snackbarOpen}
