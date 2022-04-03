@@ -29,12 +29,17 @@ function ActivityFeed({ address, following }: ActivityFeedInterface) {
 
   return (
     <div className={style.ActivityFeed}>
-      {feedData.map((feed, i) => {
-        const user = following?.followings.list.filter((i) => {
-          if (i.address === feed.from) {
-            return i;
+      {feedData.map((feed) => {
+        console.log(feed);
+        console.log(following?.followings.list);
+        let user = following?.followings.list.find((filter_user) => {
+          if (
+            filter_user.address == feed.from ||
+            filter_user.address == feed.to
+          ) {
+            return filter_user;
           }
-        })[0];
+        });
 
         const user_name = user?.domain || formatAddress(feed.from);
         let trade_type = "";
@@ -50,7 +55,7 @@ function ActivityFeed({ address, following }: ActivityFeedInterface) {
         }
 
         let link = "https://etherscan.io/tx/" + feed.txHash;
-        console.log(user);
+
         const date = new Date(parseInt(feed.timeStamp) * 1000);
         const ago = timeAgo(date);
         return (

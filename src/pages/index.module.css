@@ -11,6 +11,10 @@
   font-family: "Times New Roman", Times, serif;
 }
 
+.mainPage {
+  display: flex;
+}
+
 .logo {
   width: 500px;
   height: 500px;

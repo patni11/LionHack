@@ -263,15 +263,18 @@ const Home: NextPage = () => {
 
 
 {address && <div className={`row d-flex justify-content-between`}>
-  <div className="col-10">
+  {/* <div className="col-10"> */}
+  <div className={styles.mainPage}>
    <ActivityFeed address={address} following={followListInfo}/>
+   <LeaderBoard/> 
    </div>
+   {/* </div> */}
 
-   <div className="col-2 position-relative">
-     <div className="position-fixed">
-     <LeaderBoard/> 
-     </div>
-     </div>
+   {/* <div className="col-2 position-relative">
+     <div className="position-fixed"> */}
+     
+     {/* </div>
+     </div> */}
 
 </div>}
       
