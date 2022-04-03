@@ -1,18 +1,17 @@
 import React from "react";
 import style from "./Feed.module.css";
-import Image from "next/image";
 
 interface FeedInterface {
-  image: string;
+  img: string;
   address: string;
   activity_type: string;
   activity_title: string;
   activity_description: string;
-  date: Date;
+  date: string;
 }
 
 function Feed({
-  image,
+  img,
   address,
   activity_type,
   activity_title,
@@ -24,13 +23,7 @@ function Feed({
     <div className={style.feed_container}>
       <div className={style.feed_head}>
         <div className={style.head_left}>
-          <img
-            src={image}
-            alt=""
-            className={style.feed_image}
-            width="50px"
-            height="50px"
-          />
+          <img src={img} alt="" className={style.feed_image} />
           <h4 className={style.feed_address}> {address}</h4>
         </div>
 

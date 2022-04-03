@@ -6,3 +6,8 @@
   font-size: 12px;
   color: grey;
 }
+
+.topSticky {
+  top: 84px;
+  position: sticky;
+}

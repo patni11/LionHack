@@ -41,7 +41,7 @@ const LeaderBoard = ({ leaderData }: LeaderBoardInterface) => {
   if (!leaderData) return null;
 
   return (
-    <div className={`p-5`}>
+    <div className={`p-5 ${styles.topSTicky}`}>
       <h4 className={``}>LeaderBoard</h4>
       {leaderData &&
         leaderData.map((el: any) => (
@@ -62,6 +62,7 @@ const LeaderBoard = ({ leaderData }: LeaderBoardInterface) => {
             </div>
           </div>
         ))}
+      )
     </div>
   );
 };

@@ -1,72 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./ActivityFeed.module.css";
 import Feed from "./feed";
+import { ethers } from "ethers";
+import { getUserFeed, NFTTransactionInterface } from "./getFeedData";
+import detectEthereumProvider from "@metamask/detect-provider";
 
-function ActivityFeed() {
-  const [feedData, setFeedData] = useState([
-    {
-      image: "/fff.png",
-      address: "shubhpatni.eth",
-      activity_type: "NFT",
-      activity_title: "Shubh Just Made the BANK",
-      activity_description:
-        " Shubh sold his hypotetical Azuki for 500ETH and made a profit of 499ETH",
-      id: "0x050e1se9d457faf19b02f1f310859a2dbfc2c55ef11762a44096f3f81fdae1b5",
-    },
-    {
-      image: "/fff.png",
-      address: "shubhpatni.eth",
-      activity_type: "NFT",
-      activity_title: "Shubh Just Made the BANK",
-      activity_description:
-        " Shubh sold his hypotetical Azuki for 500ETH and made a profit of 499ETH",
-      id: "0x050e1ce9h457faf19b02f1f310859a2dbfc2c55ef11762a44096f3f81fkae1b5",
-    },
-    {
-      image: "/fff.png",
-      address: "shubhpatni.eth",
-      activity_type: "NFT",
-      activity_title: "Shubh Just Made the BANK",
-      activity_description:
-        " Shubh sold his hypotetical Azuki for 500ETH and made a profit of 499ETH",
-      id: "0x050e1ck9d457faf19b02f1f310859a2dbfc2c55ef11762a44096f3h81fdae1b5",
-    },
-    {
-      image: "/fff.png",
-      address: "shubhpatni.eth",
-      activity_type: "NFT",
-      activity_title: "Shubh Just Made the BANK",
-      activity_description:
-        " Shubh sold his hypotetical Azuki for 500ETH and made a profit of 499ETH",
-      id: "0x050e1ce9d457fafs9b02f1f310859a2dbfc2c55ef11762a440s6f3f81fdae1b5",
-    },
-    {
-      image: "/fff.png",
-      address: "shubhpatni.eth",
-      activity_type: "NFT",
-      activity_title: "Shubh Just Made the BANK",
-      activity_description:
-        " Shubh sold his hypotetical Azuki for 500ETH and made a profit of 499ETH",
-      id: "0x050e1ce9d457faf19302f1f310859a2dbfc2c55ef11762a44096f3f81fdae1b5",
-    },
-  ]);
+interface ActivityFeedInterface {
+  address: string;
+}
+function ActivityFeed({ address }: ActivityFeedInterface) {
+  const [feedData, setFeedData] = useState<NFTTransactionInterface[]>([]);
+  const [ensStrings, setEnsStrings] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchUserFeed = async () => {
+      const data: NFTTransactionInterface[] = await getUserFeed(address);
+      const allEns: string[] = [];
+      const mapRes: any = data.map(async (feed) => {
+        const ens = await clean_address(feed.from);
+        allEns.push(ens);
+      });
+      await Promise.all(mapRes);
+      setEnsStrings(allEns);
+      console.log(data);
+      setFeedData(data);
+    };
+    fetchUserFeed();
+  }, [setFeedData]);
 
   return (
     <div className={style.ActivityFeed}>
-      {feedData.map((feed) => {
+      {console.log(feedData)}
+      {feedData.map((feed, i) => {
         return (
           <Feed
-            image={feed.image}
-            address={feed.address}
-            activity_type={feed.activity_type}
-            activity_title={feed.activity_title}
-            activity_description={feed.activity_description}
-            key={feed.id}
+            img="/fff.png"
+            address={ensStrings[i]}
+            activity_type={feed.tokenID}
+            activity_title={feed.tokenName}
+            activity_description={feed.tokenSymbol}
+            date={feed.timeStamp}
+            key={feed.from}
           ></Feed>
         );
       })}
     </div>
   );
 }
+
+const clean_address = async (address: string) => {
+  const provider: any = await detectEthereumProvider();
+  let name: string = "sadfasdfs";
+  name = await provider.lookupAddress(address);
+  return name;
+};
 
 export default ActivityFeed;
