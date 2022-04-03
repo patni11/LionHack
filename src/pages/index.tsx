@@ -22,6 +22,7 @@ const NAME_SPACE = "CyberConnect";
 const NETWORK = Network.ETH;
 const FIRST = 10; // The number of users in followings/followers list for each fetch
 
+
 const Home: NextPage = () => {
   const { address, cyberConnect } = useWeb3();
   const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
@@ -291,4 +292,5 @@ const Home: NextPage = () => {
   );
 };
 
+  
 export default Home;

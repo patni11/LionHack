@@ -7,6 +7,10 @@
   padding: 0 50px;
 }
 
+.root {
+  font-family: "Times New Roman", Times, serif;
+}
+
 .logo {
   width: 500px;
   height: 500px;

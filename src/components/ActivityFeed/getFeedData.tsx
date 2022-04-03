@@ -37,6 +37,7 @@ const addressTransactions = async (address: any, txType: any) => {
       response?.data?.result?.forEach((el: any) => {
         result.push({
           timeStamp: el.timeStamp,
+          txHash: el.hash,
           from: el.from,
           to: el.to,
           tokenID: el.tokenID,
@@ -62,6 +63,7 @@ interface FollowingListRespInterface {
 export interface NFTTransactionInterface {
   from: string;
   timeStamp: string;
+  txHash: string;
   to: string;
   tokenDecimal: string;
   tokenID: string;
