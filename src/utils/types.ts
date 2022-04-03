@@ -14,6 +14,22 @@ export interface SearchUserInfoArgs {
   network?: string;
 }
 
+export interface RecommendationInfoArgs {
+  address : string;
+  filter? : Filter;
+  network? : Network;
+  first? : number;
+  after? : string;
+}
+
+export interface BasicRecommendationInfo {
+  address : string;
+  domain : string;
+  avatar : string;
+  reccomendationReason : string;
+  followerCount : number;
+}
+
 export interface BasicUserInfo {
   domain: string;
   address: string;
@@ -26,6 +42,16 @@ export interface FollowListInfo {
     hasNextPage: boolean;
   };
   list: BasicUserInfo[];
+}
+
+export interface RecommendationListInfo {
+  pageInfo : {
+    startCursor : string;
+    endCursor : string;
+    hasNextPage : boolean;
+    hasPreviousPage : boolean;
+  }
+  list : BasicRecommendationInfo[];
 }
 
 export interface FollowListInfoResp {
@@ -49,7 +75,16 @@ export interface SearchUserInfoResp {
   };
 }
 
+export interface RecommendationResp {
+  result: string;
+  data : RecommendationListInfo;
+}
+
 export enum Network {
   ETH = "ETH",
   SOLANA = "SOLANA",
+}
+
+export enum Filter {
+  SOCIAL = "SOCIAL"
 }

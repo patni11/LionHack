@@ -1,8 +1,10 @@
 import {
   FollowListInfoArgs,
   SearchUserInfoArgs,
+  RecommendationInfoArgs,
   FollowListInfoResp,
   SearchUserInfoResp,
+  RecommendationResp
 } from "./types";
 
 const endPoint = "https://api.cybertino.io/connect/";
@@ -86,13 +88,46 @@ export const searchUserInfoSchema = ({
   };
 };
 
-export const recommendationSchema = ({
-  
-});
+export const recommendationInfoSchema = ({
+  address
+}: RecommendationInfoArgs) => {
+  return {
+    operationName: "recommendation",
+    query: `query QueryRecommendation($address : String!) {
+      recommendations(
+        address: $address
+        filter: SOCIAL
+        network: ETH
+        first: 5
+      ) {
+        result
+        data {
+          pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+          }
+          list {
+            address
+            domain
+            avatar
+            recommendationReason
+            followerCount
+          }
+        }
+      }
+    }`,
+    variables : {
+      address
+    }
+  }
+};
 
 export const querySchemas = {
   followListInfo: followListInfoSchema,
   searchUserInfo: searchUserInfoSchema,
+  recommendationInfo: recommendationInfoSchema
 };
 
 export const request = async (url = "", data = {}) => {
@@ -158,4 +193,15 @@ export const searchUserInfoQuery = async ({
   const resp = await handleQuery(schema, endPoint);
 
   return (resp?.data as SearchUserInfoResp) || null;
+};
+
+export const reccomendationQuery = async ({
+  address
+} : RecommendationInfoArgs) => {
+  const schema = querySchemas["recommendationInfo"]({
+    address
+  });
+  const resp = await handleQuery(schema, endPoint)
+
+  return (resp?.data as RecommendationResp) || null;
 };
