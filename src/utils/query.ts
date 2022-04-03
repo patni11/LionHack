@@ -86,6 +86,10 @@ export const searchUserInfoSchema = ({
   };
 };
 
+export const recommendationSchema = ({
+  
+});
+
 export const querySchemas = {
   followListInfo: followListInfoSchema,
   searchUserInfo: searchUserInfoSchema,

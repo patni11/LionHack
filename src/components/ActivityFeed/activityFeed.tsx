@@ -30,8 +30,9 @@ function ActivityFeed({ address, following }: ActivityFeedInterface) {
   return (
     <div className={style.ActivityFeed}>
       {feedData.map((feed, i) => {
+        console.log(feed);
         const user = following?.followings.list.filter(
-          (i) => i.address === feed.from || feed.to
+          (i) => i.address === feed.from
         )[0];
         const user_name = user?.domain || user?.address;
         let trade_type = "";
