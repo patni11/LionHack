@@ -43,6 +43,7 @@ const addressTransactions = async (address: any, txType: any) => {
           tokenName: el.tokenName,
           tokenSymbol: el.tokenSymbol,
           tokenDecimal: el.tokenDecimal,
+          type: txType,
         });
       });
     })
@@ -66,6 +67,7 @@ export interface NFTTransactionInterface {
   tokenID: string;
   tokenName: string;
   tokenSymbol: string;
+  type: string;
 }
 
 const getUserFeed = async (userAddress: any) => {

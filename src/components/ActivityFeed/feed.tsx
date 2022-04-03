@@ -3,7 +3,7 @@ import style from "./Feed.module.css";
 
 interface FeedInterface {
   img: string;
-  address: string;
+  address: string | undefined;
   activity_type: string;
   activity_title: string;
   activity_description: string;
